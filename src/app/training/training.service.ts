@@ -38,9 +38,11 @@ export class TrainingService {
         });
       })
       .subscribe((exercises: Exercise[]) => {
-        this.uiService.loadingStateChanged.next(false);
-        this.availableExercises = exercises;
-        this.exercisesChanged.next([...this.availableExercises]);
+        // this.uiService.loadingStateChanged.next(false);
+        // this.availableExercises = exercises;
+        // this.exercisesChanged.next([...this.availableExercises]);
+        this.store.dispatch(new UI.StopLoading());
+        this.store.dispatch(new TrainingService.)
       }, error => {
         this.uiService.loadingStateChanged.next(false);
         this.uiService.showSnackbar('Fetching Exercises failed, please try again later', null, 3000);
